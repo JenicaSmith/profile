@@ -3,91 +3,450 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jenica Smith | Profile</title>
+    <title>Professional Profile</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #ffffff;
             line-height: 1.6;
+            overflow-x: hidden;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #16a085 100%);
+            background-attachment: fixed;
+            color: #333;
         }
-        header {
-            text-align: center;
-            padding: 60px 20px;
+
+        .floating-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
         }
-        header h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        section {
-            max-width: 900px;
-            margin: auto;
-            padding: 40px 20px;
+
+        .floating-element {
+            position: absolute;
             background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            margin-bottom: 30px;
+            border-radius: 50%;
+            animation: float 20s infinite linear;
         }
-        h2 {
-            color: #ffda79;
-            border-bottom: 1px solid #ffffff33;
-            padding-bottom: 10px;
+
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
         }
-        ul {
-            list-style-type: square;
-            padding-left: 20px;
+
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            left: 80%;
+            animation-delay: -5s;
         }
-        footer {
+
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 20px;
-            font-size: 0.9em;
-            color: #cccccc;
+            background: linear-gradient(45deg, rgba(22, 160, 133, 0.9), rgba(46, 204, 113, 0.8));
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            margin: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            animation: slideInUp 1s ease-out;
         }
-        @media(max-width: 600px) {
-            header h1 {
-                font-size: 2em;
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
             }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content {
+            color: white;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInLeft 1.2s ease-out 0.3s both;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            animation: fadeInRight 1.2s ease-out 0.6s both;
+        }
+
+        .hero .location {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.8;
+            animation: fadeInUp 1.2s ease-out 0.9s both;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section {
+            padding: 80px 20px;
+            margin: 40px 0;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .professional {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.95), rgba(22, 160, 133, 0.9));
+            color: white;
+        }
+
+        .education {
+            background: linear-gradient(135deg, rgba(26, 188, 156, 0.95), rgba(46, 204, 113, 0.9));
+            color: white;
+        }
+
+        .business {
+            background: linear-gradient(135deg, rgba(52, 152, 219, 0.95), rgba(155, 89, 182, 0.9));
+            color: white;
+        }
+
+        .wedding {
+            background: linear-gradient(135deg, rgba(41, 128, 185, 0.95), rgba(109, 213, 250, 0.9));
+            color: white;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            text-align: center;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .card p, .card ul {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .card li {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .card li:last-child {
+            border-bottom: none;
+        }
+
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+            opacity: 0.8;
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .wedding-colors {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .color-sample {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: bounce 2s infinite;
+        }
+
+        .royal-blue {
+            background: #4169E1;
+        }
+
+        .white {
+            background: #FFFFFF;
+            border: 3px solid rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .card-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-arrow {
+            width: 30px;
+            height: 30px;
+            border: 3px solid white;
+            border-top: none;
+            border-left: none;
+            transform: rotate(45deg);
         }
     </style>
 </head>
 <body>
+    <div class="floating-bg">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
 
-    <header>
-        <h1>Jenica Smith</h1>
-        <p>Corporal | Prosecution Liaison Officer | Entrepreneur | Soon-to-be Bride</p>
-    </header>
+    <div class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Professional Profile</h1>
+                <p class="subtitle">Jamaica Constabulary Force | Corporal</p>
+                <p class="location">📍 Jamaica</p>
+                <div class="scroll-indicator">
+                    <div class="scroll-arrow"></div>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>About Me</h2>
-        <p>I am a dedicated member of the Jamaica Constabulary Force, recently promoted to Corporal and serving as a Prosecution Liaison Officer. I am passionate about justice, community service, and personal growth. When I'm not in uniform, I'm building my eco-conscious brand, Fresh Fusion Care, and preparing for one of the biggest days of my life – my wedding on November 5, 2025!</p>
-    </section>
+        <section class="section professional">
+            <h2>👮‍♂️ Professional Background</h2>
+            <div class="card-grid">
+                <div class="card pulse">
+                    <div class="icon">🏛️</div>
+                    <h3>Current Position</h3>
+                    <ul>
+                        <li><strong>Rank:</strong> Corporal (Recently Promoted)</li>
+                        <li><strong>Role:</strong> Prosecution Liaison Officer</li>
+                        <li><strong>Status:</strong> 6-Month Probationary Period</li>
+                        <li><strong>Organization:</strong> Jamaica Constabulary Force</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="icon">⚖️</div>
+                    <h3>Specialization</h3>
+                    <p>Serving as a crucial link between law enforcement and the judicial system, ensuring seamless prosecution processes and maintaining the highest standards of justice delivery in Jamaica.</p>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>Professional Background</h2>
-        <ul>
-            <li><strong>Jamaica Constabulary Force:</strong> Prosecution Liaison Officer, Corporal Rank, Currently on Probation</li>
-            <li><strong>Community Service:</strong> Active in community-based policing initiatives</li>
-            <li><strong>Education:</strong> Pursuing academic growth with focus areas in English, Business Planning, and Accounting</li>
-        </ul>
-    </section>
+        <section class="section education">
+            <h2>📚 Education & Development</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="icon">✍️</div>
+                    <h3>Academic Focus</h3>
+                    <ul>
+                        <li>English Argumentative Essays</li>
+                        <li>Visual Arguments & Presentations</li>
+                        <li>Informative Speech Delivery</li>
+                        <li>Accounting Principles</li>
+                        <li>Business Planning & Strategy</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <div class="icon">🎯</div>
+                    <h3>Learning Preferences</h3>
+                    <ul>
+                        <li>Clear definitions with examples</li>
+                        <li>Visual diagrams and illustrations</li>
+                        <li>Detailed elaborations for deep understanding</li>
+                        <li>APA formatting expertise</li>
+                        <li>Caribbean/Jamaican source references</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>Entrepreneurial Venture: Fresh Fusion Care</h2>
-        <p>Fresh Fusion Care is my small business offering eco-friendly cleaning products and natural skincare solutions. My mission is to promote wellness and environmental responsibility right here in Jamaica.</p>
-    </section>
+        <section class="section business">
+            <h2>🌿 Business Venture</h2>
+            <div class="card-grid">
+                <div class="card pulse">
+                    <div class="icon">🧴</div>
+                    <h3>Fresh Fusion Care</h3>
+                    <p>Pioneering eco-friendly cleaning products and natural skincare items, combining sustainability with effectiveness for the modern Jamaican consumer.</p>
+                </div>
+                
+                <div class="card">
+                    <div class="icon">📊</div>
+                    <h3>Development Areas</h3>
+                    <ul>
+                        <li>Comprehensive Business Plan</li>
+                        <li>Investor Pitch Deck</li>
+                        <li>Financial Projections & Analysis</li>
+                        <li>Social Media Strategy</li>
+                        <li>Market Penetration Planning</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>Upcoming Life Event</h2>
-        <p>I’m excitedly planning my wedding scheduled for Wednesday, November 5, 2025. The theme colors: Royal Blue and White, representing purity and strength.</p>
-    </section>
-
-    <footer>
-        &copy; 2025 Jenica Smith. All Rights Reserved.
-    </footer>
-
+        <section class="section wedding">
+            <h2>💍 Upcoming Wedding</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="icon">💒</div>
+                    <h3>Wedding Details</h3>
+                    <p><strong>Date:</strong> Wednesday, November 5, 2025</p>
+                    <p><strong>Style:</strong> Private & Intimate Ceremony</p>
+                    <div class="wedding-colors">
+                        <div class="color-sample royal-blue" title="Royal Blue"></div>
+                        <div class="color-sample white" title="White"></div>
+                    </div>
+                    <p style="text-align: center; margin-top: 10px;"><strong>Royal Blue & White Theme</strong></p>
+                </div>
+                
+                <div class="card">
+                    <div class="icon">✨</div>
+                    <h3>Vision</h3>
+                    <p>A beautiful celebration combining professional achievement with personal milestone, reflecting the elegant balance of service, ambition, and love.</p>
+                </div>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
